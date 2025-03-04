@@ -16,19 +16,6 @@ CXXFLAGS := $(CXXFLAGS) -I. -I $(C_SRC_DIR)/leveldb/include -fPIC
 TEST_CXXFLAGS := $(CXXFLAGS) -Wno-narrowing
 
 ifeq ($(shell uname -s), Darwin)
-
-	# OSX with homebrew
-  HAS_BREW := $(shell command -v brew;)
-
-	ifdef HAS_BREW
-		SNAPPY_DIR ?= $(shell brew --prefix snappy)
-	endif
-
-	# Default dir (Mac ports)
-	SNAPPY_DIR ?= /usr/local/opt/snappy
-
-  LDFLAGS += -L${SNAPPY_DIR}/lib
-
 	# Resolves C++11 narrowing error on Mac OS
 	TEST_CXXFLAGS += -Wno-c++11-narrowing
 endif
