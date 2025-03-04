@@ -21,7 +21,7 @@ ifeq ($(shell uname -s), Darwin)
 endif
 
 get-deps:
-	if [ ! -d leveldb ]; then \
+	if [ ! -e leveldb ]; then \
 	    git clone --depth=1 --branch=$(LEVELDB_VSN) https://github.com/basho/leveldb && \
 	    (cd leveldb && git submodule update --depth 1 --init); \
 	fi
